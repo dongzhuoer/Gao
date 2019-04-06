@@ -6,7 +6,11 @@ dir('weekly-report', 'md', full = T) %>% lapply(
 )
 ```
 
-pandoc -i *.md -o *.docx --reference-docx=DongZ-WeeklyReport.docx
+refer to [here](https://cloud.tsinghua.edu.cn/d/615306a832bf47e398e3/) for `.docx` I submitted, paper read note, and 2017-08-27,
+
+download [DongZ-WeeklyReport.docx](https://github.com/dongzhuoer/Gao/blob/master/weekly-report/DongZ-WeeklyReport.docx), then `pandoc -i *.md -o *.docx --reference-docx=DongZ-WeeklyReport.docx`
+
+
 
 ## main reference
 
