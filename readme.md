@@ -1,5 +1,8 @@
 # Gao
 
+```r
+rmarkdown::render('weekly-report/170903.md', output_format = prettydoc::html_pretty(toc=T), output_dir = 'docs/weekly-report/')
+```
 
 ## main reference
 
