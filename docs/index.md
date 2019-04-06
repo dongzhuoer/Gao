@@ -1,5 +1,7 @@
 hello
 
+[Gene Loss Identification pipeline](pipeline/)
+
 # Weekly Report
 
 - [2017-09-03](weekly-report/170903.html)
