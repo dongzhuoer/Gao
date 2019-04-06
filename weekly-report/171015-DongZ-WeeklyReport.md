@@ -1,0 +1,198 @@
+<!---
+cd $Gao/office/; pandoc -i 171015-DongZ-WeeklyReport.md -o 171015-DongZ-WeeklyReport.docx --reference-docx=DongZ-WeeklyReport.docx
+-->
+
+# Part I: Project Review
+
+
+## What is the general scientific question?
+
+How to improve Zhao et al. (2015) 's pipeline and analyse gene loss in birds?
+
+## What is my specific scientific question?
+
+1. How to further filter the result of PseudoPipe?
+
+1. How to detect unitary gene loss in birds? (How to choose _long-established_ protein-coding genes? How to choose appropriate divergent time? How will the pipeline perform to a large number of species?)
+
+1. How does gene loss correlate with genome size/gain/loss?
+    
+
+## What is my hypothesis?
+
+1. We can further filter the result of PseudoPipe by perfrom ortholog prediction again using [HaMStR](https://bmcevolbiol.biomedcentral.com/articles/10.1186/1471-2148-9-157).
+  
+1. We can use Palaeognathae （古颚总目) as outgroup to investige unitary gene loss in Galloanseres (鸡雁小纲) and neoaves (新鸟小纲), which diverged about **90** Myrs ago. Or use Palaeognathae and Galloanseres as outgroup to investige lineages within neoaves (新鸟小纲), which diverged time about **67** Myrs ago ( close to the WGD event in Poaceae accroding to [Schnable et al, 2016](https://academic.oup.com/gbe/article-lookup/doi/10.1093/gbe/evs009)).
+
+1. genome loss may not influence unitary gene loss since they are long-established protein-coding genes ([Kapusta et al., 2017](http://www.pnas.org/content/114/8/E1460.full))
+
+## What is my experiment design plan to test the hypothesis?
+
+1. 收集鸟类的基因组数据和系统发育关系。
+
+![Suh et al., 2016, figure 1](image/Suh2016-Fig1.png)
+
+根据 [Suh et al. (2016)](https://onlinelibrary.wiley.com/doi/10.1111/nyas.13295/full) 整理的鸟类系统发育结果，neoaves 被分为 9 个支系，这些支系内部的系统发育关系已经比较稳定，但是它们之间的系统发育关系却存在着很大的争论。所以这里我们将其作为并系群。通过选取 Palaeognathae (while-thorated tinamou and common ostrich) 为外群， 我们能鉴定出 long-established protein-coding gene 的丢失。
+
+![Jarvis et al., 2014, figure 1](image/Jarvis2014-Fig1.jpg)
+
+根据 [Jarvis et al. (2014)](http://science.sciencemag.org/content/346/6215/1320.full) 构建的时间树，我们可以把支系限定为 Neognathae （今颚总目, Galloanseres + neoaves) 或 neoaves。这个分歧时间应该是比较合适的，既不太长，也不太短。
+
+
+2. 运行师兄的 pipeline，并对 PseudoPipe 的结果进行额外的筛选，对于 "genic hits" 和 "intergenic hits" 中ORF完好的情况。用 HaMStR 对这些基因再做一遍直同源基因预测，若为阴性则意味着该假基因已经不属于这一直同源基因群，也就是说该基因在此物种中已丢失。
+
+3. Kapusta et al. (2017) 提到： "Our data provide evidence for an “accordion” model of genome size evolution in birds and mammals, whereby the amount of DNA gained by transposable element expansion, which greatly varies across lineages, was counteracted by DNA loss through large segmental deletions."
+
+![Kapusta et al., 2017, figure 3](image/Kapusta2017-Fig3.png)
+
+我们可以利用其方法，分析本项研究的类群的 genome gain/loss, 然后分析 gene loss number 与 genome size/gain/loss 之间的关系。
+
+## What is the new technology that I need to develop?
+
+1. 在超级计算机上执行任务
+
+    已经熟练掌握 Linux 基本操作和 R、C++语言。
+
+    需要学习如何在超算上运行程序。
+
+2. 处理 PseudoPipe 的输出
+
+    目前解决程序的问题，可以顺利运行。但只是把其输出直接传给 pipeline， 还需要掌握如何自己分析输出结果。
+
+3. 学习 Kapusta et al. (2017) 的分析方法。
+
+
+## What is the timeline and milestones?
+
+Week01~04 收集数据，运行完 pipeline，学习如何自己分析 PseudoPipe 的输出。
+
+Week05~08 使用 HaMStR 处理 "genic hits" 和 "intergenic hits" 中ORF完好的情况，得出 gene loss
+
+Week09~12 利用 Kapusta et al. (2017) 的方法，分析本项研究的类群的 genome gain/loss。
+
+Week13~16 分析 gene loss number 与 genome size/gain/loss 之间的关系，撰写毕业论文。
+
+
+# Part II: Status Update
+
+## What I have already finished?
+
+基本完成 pipeline 的运行。
+
+1. 进一步验证 PseudoPipe 需要的 `chr*_exLocs`
+
+    为了进一步验证 mysql/exon.txt 和 gtf 是一致的，我将 gene name，start coordinate，end coordinate 三者 paste 成一个字符串，结果表明两个文件的信息完全一样。
+
+    也就是说，在外显子的坐标上，两个文件是完全一致的。不过之前已经发现了在某些 mRNA 的剪接上二者有分歧，按目前的需求下，这件事可以画上一个句号了 ^[严格来说，以蜀黎为例，gtf 中含有很多没有确定染色体的 exon（比如 gl002604.1）。也许 Ensembl ftp 的 mysql 文件夹中的其他文件或其它某个文件夹中储存了染色体信息。至少我检查了 ftp 的每个文件夹，以及查阅了 https://www.ensembl.org/info/docs/api/core/core_schema.html 中关于mysql 文件夹中的每个文件的每列意义的文档，还是没找到染色体信息。]。
+
+1. synteny relationships
+
+    关于之前提到的 Schnable et al. 提供的 `EVS009_Supplemental_dataset_S1_pluslinks.xls` 中的基因名与 Ensembl 15 中不一致的问题，我又核实了一遍。我从 gtf 文件第 9 列 和 pep.fa 文件的序列民中提取出全部基因名称，然后用 `EVS009_Supplemental_dataset_S1_pluslinks.xls` 中的基因名来检索。结果还真有找不到的。
+
+    `EVS009_Supplemental_dataset_S1_pluslinks.xls` 中共有 74,152 个不重复的基因名，其中有 3,921 个与 Ensembl 15 中不一致（在执行了了我上周提到的替换之后）。55 个来自大米，1,689 来自玉米， 2,094 个来自二穗短柄草，蜀黎没有不一致的。玉米的 1,689 中有 138 个是 transcript 的名称 (其中 35 个 在 gtf 中找不到)， 二穗短柄草的 2,094 中 有 11 个是 transcript 的名称 (其中 8 个 在 gtf 中找不到)。
+
+    在 Schnable et al. 的论文中，材料与方法这一块最前面就开始讲用什么什么软件分析共线性，后面又怎么怎么处理，通篇都找不到作者用的数据来源是什么。不过我选了一个 Ensembl 15 中没有的基因”LOC_Os01g05950“，到 Ensembl Plants 搜了一下，倒是有结果，不过匹配到的 gene 的 id 是“BGIOSGA002380”。看来新版的命名方式与旧版不一样。
+
+    于是我就到 Ensembl 的网站上， https://www.ensembl.org/info/docs/api/core/core_schema.html#gene ，找到 mysql/gene.txt 的第 12 列是 "Release-independent **stable** identifier"。之后我下载了水稻的 mysql/gene.txt ，从第 12 列挑了一个 "LOC\_Os10g30809"，结果。。。 Ensembl 中检索不到。
+
+    看来这个命名的混乱我是无能为力了。
+
+    然后我突然想到把师兄放在网上的 `EVS009_Supplemental_dataset_S1_pluslinks.tsv` 的前几行也拿来检索一下，结果也发现了两个 Ensembl 15 中找不到的： "BRADI2G21200" 和 "BRADI3G41820"。可能师兄也没有解决这个问题吧。
+
+1. forbidden gene list
+
+    关于之前提到的，我构建的 `forbidden_gene_list.tsv` 中找不到网站中的示例的问题。我选了一个搜了一下，结果在一个中文的网站上显示是质体（plastid）相关基因，看来这个问题还不能忽略。
+
+    后来我在 Ensembl ftp 上找到了 embl 文件夹下的 dat 文件，里面有类似于 NCBI 上 Nucleotide 数据库形式的基因注释信息。经过分析，其中包含了 线粒体、叶绿体、质体和转座子相关的注释，于是我将这些基因提取出来（转座子的信息有很多，这里为简便起见，我按照网站上说明的字面意思，仅匹配 "transposable_element"）,并且与 gtf 中的信息整合在一起（二者不构成包含关系），然后只保留 protein coding 基因，形成 `forbidden_gene_list.tsv`。
+
+    经过检查，现在已经完全包含了网站上的示例。
+
+1. 完成玉米的 GMAP database
+
+    尝试了多次构建玉米的 GMAP database。按照上次说的又运行一整夜后，第二天起来还是没运行完，我一直等到下午 16:00，一直卡在这一步
+
+    ```
+    Writing temporary file for permuted sarray...
+    ```
+
+    我只得强行终止，后来我试着改软件说明中特别提到的 `-k` 选项
+
+    ```
+    k-mer of 12: 64 MB
+    k-mer of 13: 256 MB
+    k-mer of 14: 1 GB
+    k-mer of 15: 4 GB
+    ```
+
+    但这其实是骗人的，即使我降到 12 甚至 9，内存需求还是和之前差不多。我用 `-k 9` 跑了一夜，还是卡在上文那一步上。资源监视器显示此时 gmap 既没有占太多 CPU，也没有占太多内存，但是磁盘 IO 特别大，而且一直没有什么动静。
+
+    到周日下午，我上网查了一下，发现有 `--build-sarray` 选项。然后我加上这个选项又跑了一整晚，总算是把 GMAP database build 出来了。
+
+
+1. 完成 pipeline 的运行
+
+    | species   | brachypodium | rice | maize | sorghum | brachypodium & rice | maize & sorghum |
+    | --------- | ------------ | ---- | ----- | ------- | ------------------- | --------------- |
+    | gene loss | 128          | 100  | 242   | 87      | 27                  | 35              |
+
+    : 表1 各物种 candidate gene loss 的数量
+
+    表中数据的总和是 681，如果按把发生在两个物种的最近共同祖先的 gene loss 只算一次，那就是 619，与论文中的 742 不符 ^[有一个可能性是如果直接执行 `wc $dir/*/orthologous_groups_with_candidate_unitary_gene_loss_in_* -l` 这个指令的话，由于 MRCA 的文件夹下有三个一样的文件，故会被计算 3 遍，这时显示的 total 就是 743 了，与论文中很接近，其中的微小偏差可能是 `forbidden_gene_list.tsv` 的不同造成的。]。
+
+    网页中给出了 sorghum 的完整输出，共 84 个，少了 11051、11984、8085 这三个 orthologous group ^[9 月 24 日 的报告有误，当时少复制了一行]。这个差异应该是 `forbidden_gene_list.tsv` 的的不同造成的。 
+
+    |      | false positive | relic-retaining | relic-lacking |
+    | ---- | -------------- | --------------- | ------------- |
+    | Dong | 60             | 319             | 302           |
+    | Zhao | 248            | 196             | 297           |
+
+    : 表2：不同类型的 candidate gene loss
+
+    relic-lacking 很接近，差别主要在 relic-retaining 上 [^false positive 可能是用总数减去前两者算出来的，如果上一条脚注的猜想成立的话。] 我觉得原因应该在 PseudoPipe 上，在 genetic hits 的定义上，从输入信息来看，能区分基因区域和基因间区域的只有 `chr*_exLocs` 包含的外显子信息。
+
+    |      |  relic-retaining | relic-lacking |
+    | ---- |  --------------- | ------------- |
+    | Dong |  87             | 59           |
+    | Zhao |  61             | 68           |
+
+    : 表3：不同类型的 gene loss
+
+    relic-retaining 的差异应该是上一步就存在了的，relic-lacking 的差异则可能是 `EVS009_Supplemental_dataset_S1_pluslinks.tsv` 的问题。
+
+    最终的结果我还没有做详细比较。
+
+## What was my to-do list from last meeting (copy directly from last RIP report)? 
+
+1. 运行完玉米的 GMAP database
+
+2. 解决剩余的一些小问题
+
+3. 运行完pipeline，蜀黎的结果与网站上的作比较，整合所有物种的结果后与论文中比较
+
+4. 查阅论文，构思新的 proposal
+
+## What I have finished since last meeting that was expected and planned?
+
+基本与第一个问题的答案一样，不过我没有想到我能解决 `forbidden_gene_list.tsv` 的问题。
+
+## What are unexpected obstacles?
+
+无
+
+## What are unexpected discoveries? 
+
+无
+
+## What are questions/problems that I need help with or need a targeted discussion? 
+
+Can I get a copy of Zhao's result? Now I have almost finished the whole pipeline and I want to compare with his, especially some intermediate ones, such as `EVS009_Supplemental_dataset_S1_pluslinks.xls` and `forbidden_gene_list.tsv`.
+
+## Do we need to revise the scientific question, hypothesis, experiment plan ? 
+
+Yes. I have finished a draft.
+
+## What is my plan for the next two weeks?
+
+查阅文献，进一步完善 research proposal。
+
+
