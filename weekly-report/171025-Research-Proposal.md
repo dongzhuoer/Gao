@@ -1,14 +1,15 @@
-<!---
-cd $Gao/office/; pandoc -i 171025-DongZ-ResearchProposal.md -o 171025-DongZ-ResearchProposal.docx --reference-docx=DongZ-WeeklyReport.docx
--->
+---
+title: Research Proposal
+---
 
-# Research Proposal
 
-## What is the general scientific question?
+# What is the general scientific question?
 
 How to improve Zhao et al. (2015) 's pipeline and analyse gene loss in birds?
 
-## What is my specific scientific question?
+
+
+# What is my specific scientific question?
 
 1. How to further filter the result of PseudoPipe?
 
@@ -18,7 +19,9 @@ How to improve Zhao et al. (2015) 's pipeline and analyse gene loss in birds?
     
 1. What roles do the gene lost play (take core landbirds and core waterbirds for example)? 
 
-## What is my hypothesis?
+
+
+# What is my hypothesis?
 
 1. We can further filter the result of PseudoPipe by perfrom ortholog prediction again using [HaMStR](https://bmcevolbiol.biomedcentral.com/articles/10.1186/1471-2148-9-157). We can also make the pipeline more user-friendly and ready for complex phylogeny.
   
@@ -28,9 +31,11 @@ How to improve Zhao et al. (2015) 's pipeline and analyse gene loss in birds?
 
 1. Unitary gene loss maybe enrich in some important functions shaping core landbirds and core waterbirds.
 
-    ![Lovell et al., 2014, Table 1 (screenshot)](./image/Lovell2014-Table1.png)
+   ![Lovell et al., 2014, Table 1 (screenshot)](./image/Lovell2014-Table1.png)
 
-## What is my experiment design plan to test the hypothesis?
+
+
+# What is my experiment design plan to test the hypothesis?
 
 1. fetch orthologous relationship from [OrthoDB](http://www.orthodb.org/) (54 bird species are available now, while Ensembl only contains 5), 运行师兄的 pipeline，并对 PseudoPipe 的结果进行额外的筛选，对于 "genic hits" 和 "intergenic hits" 中ORF完好的情况。用 HaMStR 对这些基因再做一遍直同源基因预测，若为阴性则意味着该假基因已经不属于这一直同源基因群，也就是说该基因在此物种中已丢失。简单来说，HaMStR 的原理是就是分析某一个基因是否是属于某一 orthologous group，这就需要该 orthologous group 的数个基因的蛋白质序列（core-orthologs set）以及一个参考物种的所有蛋白质序列。
 
@@ -74,7 +79,9 @@ How to improve Zhao et al. (2015) 's pipeline and analyse gene loss in birds?
 
     According the chronogram from [Jarvis et al. (2014)](http://science.sciencemag.org/content/346/6215/1320.full)，core landbirds and core waterbirds diverged about _65_ Myrs ago, I think this should be a appropriate divergence time to study evolution, neither too long nor too short.
 
-## What is the new technology that I need to develop?
+
+
+# What is the new technology that I need to develop?
 
 1. 在超级计算机上执行任务
 
@@ -90,7 +97,9 @@ How to improve Zhao et al. (2015) 's pipeline and analyse gene loss in birds?
 
 3. 学习 Kapusta et al. (2017) 分析 gennome gain/loss，和 Lovell et al. (2014) 用到的 Ingenuity Pathway Analysis 和 OG enrichment。
 
-## What is the timeline and milestones?
+
+
+# What is the timeline and milestones?
 
 Week01~04 收集数据，得出 candidate gene loss，深入研究并改进 pipeline。
 
