@@ -9,25 +9,27 @@ internship at Ge Gao's lab
 2. run [pipeline](pipeline.sh)
 3. [summary](summary.R) result in R
 
+Some files are deposited at [netdisk](https://cloud.tsinghua.edu.cn/d/17342eb01cf74bb69156/).
+
 
 
 # Weekly Report
 
 ```r
-dir('weekly-report', 'md', full = T) %>% lapply(
-    rmarkdown::render, prettydoc::html_pretty(toc = T), output_dir = 'docs/weekly-report/'
+lapply(
+    dir('weekly-report', 'md', full = T),
+    rmarkdown::render, 
+    output_format = prettydoc::html_pretty(toc = T), output_dir = 'docs/weekly-report/'
 )
 ```
 
-refer to netdisk  for `.docx` I submitted, paper read note, and 2017-08-27,
+Refer to netdisk for paper read note, 2017-08-27 (before I use markdown) and submitted files.
 
-[netdisk](https://cloud.tsinghua.edu.cn/d/17342eb01cf74bb69156/)
-
-download [DongZ-WeeklyReport.docx](https://github.com/dongzhuoer/Gao/blob/master/weekly-report/DongZ-WeeklyReport.docx), then `pandoc -i *.md -o *.docx --reference-docx=DongZ-WeeklyReport.docx`
+If you want to build `.docx`, download [DongZ-WeeklyReport.docx](weekly-report/DongZ-WeeklyReport.docx), then `pandoc -i *.md -o *.docx --reference-docx=DongZ-WeeklyReport.docx`.
 
 
 
-# main reference
+# Reference
 
 1. [Paten et al, 2017](https://dx.doi.org/10.1101/gr.214155.116)  
    _Genome graphs and the evolution of genome inference_
@@ -38,7 +40,7 @@ download [DongZ-WeeklyReport.docx](https://github.com/dongzhuoer/Gao/blob/master
 
 
 
-#  species name and id 
+# Species
 
 | name          | species                     | gene name  (^$ is omitted)                           | Chinese name | tax_id |
 | ------------- | --------------------------- | ---------------------------------------------------- | ------------ | ------ |
@@ -52,7 +54,7 @@ download [DongZ-WeeklyReport.docx](https://github.com/dongzhuoer/Gao/blob/master
 
 
 
-# afterword
+# Afterword
 
 how to improve research proposal
 
