@@ -1,7 +1,3 @@
-hello
-
-[Gene Loss Identification Pipeline](pipeline/)
-
 # Weekly Report
 
 - [2017-09-03](weekly-report/170903.html)
@@ -15,3 +11,5 @@ hello
 - [2017-10-29](weekly-report/171029.html)
 
 # [Research-Proposal](weekly-report/171025-Research-Proposal.html)
+
+# [Gene Loss Identification Pipeline](pipeline/)
