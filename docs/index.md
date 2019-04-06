@@ -13,3 +13,5 @@
 # [Research-Proposal](weekly-report/171025-Research-Proposal.html)
 
 # [Gene Loss Identification Pipeline](pipeline/)
+
+I create a copy in case [original](http://gene-loss.cbi.pku.edu.cn/) one is forbidden (I often encounter this suitation, suddently the website could only be accessed from Peking University.).
