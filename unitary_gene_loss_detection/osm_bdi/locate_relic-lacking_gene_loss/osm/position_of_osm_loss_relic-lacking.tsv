@@ -1,0 +1,29 @@
+orthologous_group_with_gene_loss	parental_pep	loss_chr	loss_strand	loss_start	loss_end	position_status	organism_with_gene_loss
+3930	AC194828.3_FG004	NA	NA	NA	NA	NA	not_in_synteny	osm
+3930	GRMZM2G423863	NA	NA	NA	NA	NA	not_in_synteny	osm
+3930	Sb09g017290	NA	NA	NA	NA	NA	not_in_synteny	osm
+3930	Sb09g022140	NA	NA	NA	NA	NA	not_in_synteny	osm
+3930	Sb09g022145	NA	NA	NA	NA	NA	not_in_synteny	osm
+3930	Sb09g022150	NA	NA	NA	NA	NA	not_in_synteny	osm
+3930	Sb09g022160	NA	NA	NA	NA	NA	not_in_synteny	osm
+3930	Sb09g022170	NA	NA	NA	NA	NA	not_in_synteny	osm
+4606	GRMZM2G146283	NA	NA	NA	NA	NA	not_in_synteny	osm
+4606	Sb05g000310	NA	NA	NA	NA	NA	not_in_synteny	osm
+4606	Sb08g000330	NA	NA	NA	NA	NA	not_in_synteny	osm
+6641	GRMZM2G097170	NA	NA	NA	NA	unknown	osm
+6641	Sb02g033360	NA	NA	NA	NA	unknown	osm
+8201	GRMZM2G420988	6	+	12334402	12347030	gone	osm
+8201	Sb10g012150	6	+	12334402	12347030	gone	osm
+9168	GRMZM2G135897	NA	NA	NA	NA	unknown	osm
+9168	Sb02g000540	NA	NA	NA	NA	unknown	osm
+9897	AC218973.3_FG003	NA	NA	NA	NA	NA	not_in_synteny	osm
+9897	Sb08g023100	NA	NA	NA	NA	NA	not_in_synteny	osm
+10444	GRMZM2G371486	NA	NA	NA	NA	unknown	osm
+10444	Sb04g031690	NA	NA	NA	NA	unknown	osm
+11250	GRMZM2G069316	NA	NA	NA	NA	unknown	osm
+11250	GRMZM2G104456	NA	NA	NA	NA	unknown	osm
+11250	Sb04g005700	NA	NA	NA	NA	unknown	osm
+11328	GRMZM2G075253	2	-	28155344	28229569	gone	osm
+11328	Sb04g031485	2	-	28155344	28229569	gone	osm
+15597	GRMZM2G157313	NA	NA	NA	NA	unknown	osm
+15597	Sb06g003020	NA	NA	NA	NA	unknown	osm
