@@ -39,6 +39,128 @@ export longs=([osm]='Oryza_sativa.MSU6.15' [sbi]='Sorghum_bicolor.Sorbi1.15' [zm
 
 
 
+# data
+
+- `dna/` and `pep/` comes from Ensembl plants 15
+- `demo/`: I manually copy the demo output from pipeline webpage and save, in order to compare with my own output by `md5sum`.
+- `EVS009_Supplemental_dataset_S1_pluslinks.xls` comes from [Schnable et al.](http://gbe.oxfordjournals.org/content/early/2012/01/23/gbe.evs009.abstract)
+- `gene-loss-zhao.xlsx` is additional file 1 of [Zhao et al, 2015](https://doi.org/10.1186/s12862-015-0345-x)
+
+```
+$tree data-raw
+data-raw
+├── demo
+│   ├── EVS009_Supplemental_dataset_S1_pluslinks.tsv
+│   ├── forbidden_gene_list.tsv
+│   ├── orthologous_groups.tsv
+│   ├── orthologous_groups_with_candidate_unitary_gene_loss_in_sbi.tsv
+│   ├── relic-lacking.group
+│   ├── relic-lacking_unitary_gene_loss_of_sbi.info
+│   ├── relic-retaining.group
+│   ├── relic-retaining_unitary_gene_loss_of_sbi.info
+│   ├── unitary_gene_loss_info_for_sbi.tsv
+│   └── unitary_gene_loss_info_for_sbi_zm.tsv
+├── dna
+│   ├── Arabidopsis_thaliana.TAIR10.dna.chromosome.1.fa.gz
+│   ├── Arabidopsis_thaliana.TAIR10.dna.chromosome.2.fa.gz
+│   ├── Arabidopsis_thaliana.TAIR10.dna.chromosome.3.fa.gz
+│   ├── Arabidopsis_thaliana.TAIR10.dna.chromosome.4.fa.gz
+│   ├── Arabidopsis_thaliana.TAIR10.dna.chromosome.5.fa.gz
+│   ├── Arabidopsis_thaliana.TAIR10.dna_rm.chromosome.1.fa.gz
+│   ├── Arabidopsis_thaliana.TAIR10.dna_rm.chromosome.2.fa.gz
+│   ├── Arabidopsis_thaliana.TAIR10.dna_rm.chromosome.3.fa.gz
+│   ├── Arabidopsis_thaliana.TAIR10.dna_rm.chromosome.4.fa.gz
+│   ├── Arabidopsis_thaliana.TAIR10.dna_rm.chromosome.5.fa.gz
+│   ├── Brachypodium_distachyon.v1.0.15.dna.chromosome.1.fa.gz
+│   ├── Brachypodium_distachyon.v1.0.15.dna.chromosome.2.fa.gz
+│   ├── Brachypodium_distachyon.v1.0.15.dna.chromosome.3.fa.gz
+│   ├── Brachypodium_distachyon.v1.0.15.dna.chromosome.4.fa.gz
+│   ├── Brachypodium_distachyon.v1.0.15.dna.chromosome.5.fa.gz
+│   ├── Brachypodium_distachyon.v1.0.15.dna_rm.chromosome.1.fa.gz
+│   ├── Brachypodium_distachyon.v1.0.15.dna_rm.chromosome.2.fa.gz
+│   ├── Brachypodium_distachyon.v1.0.15.dna_rm.chromosome.3.fa.gz
+│   ├── Brachypodium_distachyon.v1.0.15.dna_rm.chromosome.4.fa.gz
+│   ├── Brachypodium_distachyon.v1.0.15.dna_rm.chromosome.5.fa.gz
+│   ├── Oryza_sativa.MSU6.15.dna.chromosome.10.fa.gz
+│   ├── Oryza_sativa.MSU6.15.dna.chromosome.11.fa.gz
+│   ├── Oryza_sativa.MSU6.15.dna.chromosome.12.fa.gz
+│   ├── Oryza_sativa.MSU6.15.dna.chromosome.1.fa.gz
+│   ├── Oryza_sativa.MSU6.15.dna.chromosome.2.fa.gz
+│   ├── Oryza_sativa.MSU6.15.dna.chromosome.3.fa.gz
+│   ├── Oryza_sativa.MSU6.15.dna.chromosome.4.fa.gz
+│   ├── Oryza_sativa.MSU6.15.dna.chromosome.5.fa.gz
+│   ├── Oryza_sativa.MSU6.15.dna.chromosome.6.fa.gz
+│   ├── Oryza_sativa.MSU6.15.dna.chromosome.7.fa.gz
+│   ├── Oryza_sativa.MSU6.15.dna.chromosome.8.fa.gz
+│   ├── Oryza_sativa.MSU6.15.dna.chromosome.9.fa.gz
+│   ├── Oryza_sativa.MSU6.15.dna_rm.chromosome.10.fa.gz
+│   ├── Oryza_sativa.MSU6.15.dna_rm.chromosome.11.fa.gz
+│   ├── Oryza_sativa.MSU6.15.dna_rm.chromosome.12.fa.gz
+│   ├── Oryza_sativa.MSU6.15.dna_rm.chromosome.1.fa.gz
+│   ├── Oryza_sativa.MSU6.15.dna_rm.chromosome.2.fa.gz
+│   ├── Oryza_sativa.MSU6.15.dna_rm.chromosome.3.fa.gz
+│   ├── Oryza_sativa.MSU6.15.dna_rm.chromosome.4.fa.gz
+│   ├── Oryza_sativa.MSU6.15.dna_rm.chromosome.5.fa.gz
+│   ├── Oryza_sativa.MSU6.15.dna_rm.chromosome.6.fa.gz
+│   ├── Oryza_sativa.MSU6.15.dna_rm.chromosome.7.fa.gz
+│   ├── Oryza_sativa.MSU6.15.dna_rm.chromosome.8.fa.gz
+│   ├── Oryza_sativa.MSU6.15.dna_rm.chromosome.9.fa.gz
+│   ├── Sorghum_bicolor.Sorbi1.15.dna.chromosome.10.fa.gz
+│   ├── Sorghum_bicolor.Sorbi1.15.dna.chromosome.1.fa.gz
+│   ├── Sorghum_bicolor.Sorbi1.15.dna.chromosome.2.fa.gz
+│   ├── Sorghum_bicolor.Sorbi1.15.dna.chromosome.3.fa.gz
+│   ├── Sorghum_bicolor.Sorbi1.15.dna.chromosome.4.fa.gz
+│   ├── Sorghum_bicolor.Sorbi1.15.dna.chromosome.5.fa.gz
+│   ├── Sorghum_bicolor.Sorbi1.15.dna.chromosome.6.fa.gz
+│   ├── Sorghum_bicolor.Sorbi1.15.dna.chromosome.7.fa.gz
+│   ├── Sorghum_bicolor.Sorbi1.15.dna.chromosome.8.fa.gz
+│   ├── Sorghum_bicolor.Sorbi1.15.dna.chromosome.9.fa.gz
+│   ├── Sorghum_bicolor.Sorbi1.15.dna_rm.chromosome.10.fa.gz
+│   ├── Sorghum_bicolor.Sorbi1.15.dna_rm.chromosome.1.fa.gz
+│   ├── Sorghum_bicolor.Sorbi1.15.dna_rm.chromosome.2.fa.gz
+│   ├── Sorghum_bicolor.Sorbi1.15.dna_rm.chromosome.3.fa.gz
+│   ├── Sorghum_bicolor.Sorbi1.15.dna_rm.chromosome.4.fa.gz
+│   ├── Sorghum_bicolor.Sorbi1.15.dna_rm.chromosome.5.fa.gz
+│   ├── Sorghum_bicolor.Sorbi1.15.dna_rm.chromosome.6.fa.gz
+│   ├── Sorghum_bicolor.Sorbi1.15.dna_rm.chromosome.7.fa.gz
+│   ├── Sorghum_bicolor.Sorbi1.15.dna_rm.chromosome.8.fa.gz
+│   ├── Sorghum_bicolor.Sorbi1.15.dna_rm.chromosome.9.fa.gz
+│   ├── Zea_mays.AGPv2.15.dna.chromosome.10.fa.gz
+│   ├── Zea_mays.AGPv2.15.dna.chromosome.1.fa.gz
+│   ├── Zea_mays.AGPv2.15.dna.chromosome.2.fa.gz
+│   ├── Zea_mays.AGPv2.15.dna.chromosome.3.fa.gz
+│   ├── Zea_mays.AGPv2.15.dna.chromosome.4.fa.gz
+│   ├── Zea_mays.AGPv2.15.dna.chromosome.5.fa.gz
+│   ├── Zea_mays.AGPv2.15.dna.chromosome.6.fa.gz
+│   ├── Zea_mays.AGPv2.15.dna.chromosome.7.fa.gz
+│   ├── Zea_mays.AGPv2.15.dna.chromosome.8.fa.gz
+│   ├── Zea_mays.AGPv2.15.dna.chromosome.9.fa.gz
+│   ├── Zea_mays.AGPv2.15.dna_rm.chromosome.10.fa.gz
+│   ├── Zea_mays.AGPv2.15.dna_rm.chromosome.1.fa.gz
+│   ├── Zea_mays.AGPv2.15.dna_rm.chromosome.2.fa.gz
+│   ├── Zea_mays.AGPv2.15.dna_rm.chromosome.3.fa.gz
+│   ├── Zea_mays.AGPv2.15.dna_rm.chromosome.4.fa.gz
+│   ├── Zea_mays.AGPv2.15.dna_rm.chromosome.5.fa.gz
+│   ├── Zea_mays.AGPv2.15.dna_rm.chromosome.6.fa.gz
+│   ├── Zea_mays.AGPv2.15.dna_rm.chromosome.7.fa.gz
+│   ├── Zea_mays.AGPv2.15.dna_rm.chromosome.8.fa.gz
+│   └── Zea_mays.AGPv2.15.dna_rm.chromosome.9.fa.gz
+├── EVS009_Supplemental_dataset_S1_pluslinks.xls
+├── gene-loss-zhao.xlsx
+└── pep
+    ├── Arabidopsis_thaliana.TAIR10.15.pep.all.fa.gz
+    ├── Brachypodium_distachyon.v1.0.15.pep.all.fa.gz
+    ├── Oryza_sativa.MSU6.15.pep.all.fa.gz
+    ├── Populus_trichocarpa.JGI2.0.15.pep.all.fa.gz
+    ├── Sorghum_bicolor.Sorbi1.15.pep.all.fa.gz
+    ├── Vitis_vinifera.IGGP_12x.15.pep.all.fa.gz
+    └── Zea_mays.AGPv2.15.pep.all.fa.gz
+
+3 directories, 103 files
+```
+
+
+
 # orthologous relationships
 
 I don't whether the following command can run, but you can a copy from netdisk
