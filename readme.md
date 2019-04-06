@@ -3,6 +3,14 @@
 internship at Ge Gao's lab
 
 
+# Usage
+
+1. [preparation](pre.md)
+2. run [pipeline](pipeline.sh)
+3. [summary](summary.R) result in R
+
+
+
 # Weekly Report
 
 ```r
@@ -16,10 +24,6 @@ refer to netdisk  for `.docx` I submitted, paper read note, and 2017-08-27,
 [netdisk](https://cloud.tsinghua.edu.cn/d/17342eb01cf74bb69156/)
 
 download [DongZ-WeeklyReport.docx](https://github.com/dongzhuoer/Gao/blob/master/weekly-report/DongZ-WeeklyReport.docx), then `pandoc -i *.md -o *.docx --reference-docx=DongZ-WeeklyReport.docx`
-
-
-
-
 
 
 

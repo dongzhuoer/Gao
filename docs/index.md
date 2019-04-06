@@ -1,6 +1,6 @@
 hello
 
-[Gene Loss Identification pipeline](pipeline/)
+[Gene Loss Identification Pipeline](pipeline/)
 
 # Weekly Report
 
