@@ -1,12 +1,12 @@
 # Gao
 
 ```r
-dir('weekly-report/', full = T) %>% lapply(
-    rmarkdown::render(prettydoc::html_pretty(toc=T), output_dir = 'docs/weekly-report/')
+dir('weekly-report', 'md', full = T) %>% lapply(
+    rmarkdown::render, prettydoc::html_pretty(toc = T), output_dir = 'docs/weekly-report/'
 )
 ```
 
-cd $Gao/office/; pandoc -i 171025-DongZ-ResearchProposal.md -o 171025-DongZ-ResearchProposal.docx --reference-docx=DongZ-WeeklyReport.docx
+pandoc -i *.md -o *.docx --reference-docx=DongZ-WeeklyReport.docx
 
 ## main reference
 
