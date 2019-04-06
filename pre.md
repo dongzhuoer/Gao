@@ -42,7 +42,7 @@ export longs=([osm]='Oryza_sativa.MSU6.15' [sbi]='Sorghum_bicolor.Sorbi1.15' [zm
 # data
 
 - `dna/` and `pep/` comes from Ensembl plants 15
-- `demo/`: I manually copy the demo output from pipeline webpage and save, in order to compare with my own output by `md5sum`.
+- `demo/`: I manually save the demo output on pipeline webpage to individual files.
 - `EVS009_Supplemental_dataset_S1_pluslinks.xls` comes from [Schnable et al.](http://gbe.oxfordjournals.org/content/early/2012/01/23/gbe.evs009.abstract)
 - `gene-loss-zhao.xlsx` is additional file 1 of [Zhao et al, 2015](https://doi.org/10.1186/s12862-015-0345-x)
 
