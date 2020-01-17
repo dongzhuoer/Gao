@@ -9,7 +9,7 @@ internship at Ge Gao's lab
 2. run [pipeline](pipeline.sh)
 3. [summary](summary.R) result in R
 
-Some files are deposited at [netdisk](https://cloud.tsinghua.edu.cn/d/17342eb01cf74bb69156/).
+Some files are deposited at [netdisk](https://cloud.tsinghua.edu.cn/d/77f24dbc3f0048afbcf5/).
 
 
 
