@@ -9,7 +9,8 @@ internship at Ge Gao's lab
 2. run [pipeline](pipeline.sh)
 3. [summary](summary.R) result in R
 
-Some files are deposited at [netdisk](https://cloud.tsinghua.edu.cn/d/77f24dbc3f0048afbcf5/).
+Some files are deposited at [netdisk](https://cloud.tsinghua.edu.cn/d/77f24dbc3f0048afbcf5/).  
+By the way, legacy documentation (such as `blastp`) at <http://nebc.nerc.ac.uk/bioinformatics/documentation/>.
 
 
 
